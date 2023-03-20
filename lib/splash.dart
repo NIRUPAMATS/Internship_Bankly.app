@@ -1,31 +1,60 @@
 import 'package:flutter/material.dart';
-class Splash extends StatelessWidget {
+class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
+  @override
+  State<Splash> createState() => _SplashState();
+}
 
+class _SplashState extends State<Splash> {
+  String _num="hello";
+  bool flag=false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:  Column(
-        children: [
-          Text('haii'),
-          TweenAnimationBuilder(
-              child: Center(
-                child: Text(
-                  'helloo',
-                  style: TextStyle(fontWeight: FontWeight.w700,fontSize: 30),
-                ),
+      body:  Center(
+        child: Column(
+          children: [
+            SizedBox(height: 100,),
+            Text(_num),
+            TextButton(onPressed:(){
+              setState(() {
+                flag=!flag;
+                print(flag);
+                if(flag==true)
+                  _num="nirupama";
+                else
+                  _num="hello";
+              });
+            },
+                child: Text('click'),
+            ),
+            SizedBox(height: 100,),
+            Container(
+              child:  Stack(
+                alignment: Alignment(2,0),
+                children: <Widget>[
+                  Container(
+                    width: 300,
+                    height: 300,
+                    color: Colors.red,
+                  ), //Container
+                  Container(
+                    width: 250,
+                    height: 250,
+                    color: Colors.black,
+                  ), //Container
+                  Container(
+                    height: 200,
+                    width: 200,
+                    color: Colors.purple,
+                  ), //Container
+                ], //<Widget>[]
               ),
-              tween: Tween <double>(begin: 0,end: 1),
-              duration: Duration(seconds: 2),
-              builder: (BuildContext context,double _val,Widget ?child){
-                return Opacity(
-                    opacity: _val,
-                  child: child,
-                );
-              }
+            )
 
-          ),
-        ],
+
+          ],
+        ),
       ),
     );
   }

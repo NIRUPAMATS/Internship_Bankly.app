@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:new_portfolio/cards/card1.dart';
 import 'package:new_portfolio/splash/budget.dart';
 import 'package:new_portfolio/home/screen.dart';
 import 'package:new_portfolio/splash.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Budget()
+      home: Card1()
     );
   }
 }
