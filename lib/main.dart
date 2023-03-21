@@ -1,12 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'package:new_portfolio/cards/card1.dart';
 import 'package:new_portfolio/splash/budget.dart';
 import 'package:new_portfolio/home/screen.dart';
-import 'package:new_portfolio/splash.dart';
+import 'package:new_portfolio/StartingScreen/startinfScreen.dart';
 
 void main() {
-  runApp( MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -19,7 +18,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Card1()
+      // home:SplashScreen()
+      home: Screen(),
     );
   }
 }

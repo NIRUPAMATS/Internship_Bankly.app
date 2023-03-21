@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_portfolio/cards/card1.dart';
 import 'package:new_portfolio/home/horizontal.dart';
 
 
@@ -11,16 +12,18 @@ class Screen extends StatelessWidget {
       body: SingleChildScrollView(
         child:
             Container(
+              color: Colors.white,
               child: Column(
                 children: [
-                  SizedBox(height: 31,),
+                  Container(height: 31,color: Colors.black87,),
                   Container(
                     color: Colors.black87,
                     width: MediaQuery.of(context).size.width,
                     height: 400,
-                    child: Column(
+                    child: Stack(
                       children: [
-                        Container(
+                        Positioned(
+                          left:27,
                           width: MediaQuery.of(context).size.width-50,
                           height: 100,
                           child: Row(
@@ -29,12 +32,21 @@ class Screen extends StatelessWidget {
                             children: [
                               Text('Good Afternoon\nJohn Dahmer',
                                 style: TextStyle(color: Colors.white,fontSize: 20,fontFamily:'A' ,fontWeight: FontWeight.w700),),
-                              Icon(Icons.notifications_rounded,
-                                color: Color(0xff24D3B5),)
+                              ElevatedButton(
+                                onPressed: (){},
+                                child: Icon(Icons.notifications_rounded,
+                                  color: Color(0xff24D3B5),),
+                                style: ButtonStyle(
+                                  shape: MaterialStateProperty.all(CircleBorder()),
+                                  backgroundColor:MaterialStateProperty.all(Colors.white),
+                                ),
+                              )
                             ],
                           ),
                         ),
-                        Container(
+                        Positioned(
+                          top: 100,
+                          left: 70,
                           height: 150,
                           width:MediaQuery.of(context).size.width-130 ,
                           child: Column(
@@ -67,13 +79,40 @@ class Screen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Container(
+                        Positioned(
+                          bottom: 10,
+                          left: 15,
                           child: Image.asset('assets/debit_per.png',scale: 0.5,),
                         ),
+                        Positioned(
+                            bottom: 0,
+                            child:Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
+                                color: Colors.white,
+                              ),
+                              width: MediaQuery.of(context).size.width,
+                              height: 50,
+                              )
+                        ),
+                        Positioned(
+                          left: 145,
+                          bottom: 0,
+                          child: CircleAvatar(
+                            radius: 38,
+                            backgroundColor: Colors.black,
+                            child: IconButton(
+                                onPressed: (){
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Card1()));
+                                },
+                                icon: Icon(Icons.keyboard_arrow_down_sharp,color: Colors.white,size: 35,),
+
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   ),
-                  SizedBox(height: 29,),
                   Container(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -97,6 +136,7 @@ class Screen extends StatelessWidget {
                       ],
                     ),
                   ),
+                  Stack(children: [
                   Container(
                     padding: EdgeInsets.all(20),
                     child: Column(
@@ -113,20 +153,28 @@ class Screen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
+                                  Container(width: MediaQuery.of(context).size.width-60),
                                   SizedBox(height: 11,),
                                   Text('Entertainment',style:TextStyle(fontSize: 20,fontWeight: FontWeight.w700,),),
                                   SizedBox(height: 11,),
                                   Text('2334 points',style: TextStyle(fontSize: 32,fontWeight: FontWeight.w700,color: Color(0xff7000FF)),)
                                 ],
                               ),
-                              Image.asset('assets/image 2.png'),
                             ],
                           ),
                         ),
                       ],
                     ),
                   ),
+                    Positioned(
+                      right: 20,
+                      bottom: 20,
+                      child:Image.asset('assets/image 2.png',scale: 1.1,),
+                    )
+                ],),
                   Container(
                     padding: EdgeInsets.fromLTRB(20, 0, 20,0),
                     child: Column(
@@ -147,7 +195,7 @@ class Screen extends StatelessWidget {
                                       CircleAvatar(
                                         backgroundColor: Color(0xfff3f0f0),
                                           radius: 36,
-                                          child: CircleAvatar(backgroundImage: AssetImage('assets/travel-luggage 1.png'),radius:35,backgroundColor: Colors.grey.withOpacity(0) ,)),
+                                          child: CircleAvatar(backgroundImage: AssetImage('assets/diet.png'),radius:35,backgroundColor: Colors.grey.withOpacity(0) ,)),
                                       Text('Food',style: TextStyle(fontSize: 10,fontWeight: FontWeight.w700),)
                                     ],
                                   ),
@@ -289,45 +337,53 @@ class Screen extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    height: 191,
-                    width: 380,
-                    margin: EdgeInsets.all(20),
-                    padding: EdgeInsets.only(left: 10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(25)),
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end:Alignment.bottomCenter ,
-                        colors: [
-                          Color(0xff72E4A0),
-                          Color(0xff24D3B5),
-                        ]
-                      )
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 17,),
-                        Text('Bring your card at home',style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.w700),),
-                        Text('only for 299/-',style: TextStyle(color: Colors.white,fontSize: 32,fontWeight: FontWeight.w700),),
-                        //SizedBox(height: 15,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            TextButton(onPressed: (){},
-                              style: TextButton.styleFrom(backgroundColor: Colors.white),
-                              child:Padding(
-                                padding: const EdgeInsets.fromLTRB(20, 6, 20, 6),
-                                child: Text('Book now!',style: TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.w700),),
-                              ),
-                            ),
-                            Image.asset('assets/image 3.png',scale: 2.11,)
-                          ],
+                    height: 230,
+                    padding: EdgeInsets.only(bottom: 10),
+                    child:Stack(children: [
+                    Container(
+                        height: 191,
+                        width: 380,
+                        margin: EdgeInsets.all(20),
+                        padding: EdgeInsets.only(left: 10),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(25)),
+                            gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end:Alignment.bottomCenter ,
+                                colors: [
+                                  Color(0xff72E4A0),
+                                  Color(0xff24D3B5),
+                                ]
+                            )
                         ),
-                      ],
-                    ),
-                  ),
+                        child:Stack(children: [
 
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 17,),
+                          Text('Bring your card at home',style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.w700),),
+                          Text('only for 299/-',style: TextStyle(color: Colors.white,fontSize: 32,fontWeight: FontWeight.w700),),
+                          SizedBox(height: 45,),
+                          TextButton(onPressed: (){},
+                            style: TextButton.styleFrom(backgroundColor: Colors.white),
+                            child:Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 4, 10, 4),
+                              child: Text('Book now!',style: TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.w700),),
+                            ),
+                          ),
+                        ],
+                      ),
+                      ],)
+                    ),
+                      Positioned(
+                          bottom: -40,
+                          right: 20,
+                          child: Image.asset('assets/image 3.png',scale:1.2,)
+                      )
+
+                    ],),
+                  ),
                 ],
               ),
             ),
